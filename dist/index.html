@@ -1,1 +1,46 @@
-<head><script defer src="main.js"></script></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/index.css">
+    <title>Guest Book</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div id="header">
+        <div><span class="sub_title" style="background-color: rgb(5, 185, 5);">모</span><span class="sub_title">여</span><span class="sub_title" style="background-color: rgb(5, 185, 5)";>봐</span><span class="sub_title">요</span></div>
+        <div id="header_title"><span class="title" style="background-color: rgb(255, 94, 140);">방</span><span class="title" style="background-color: rgb(116, 165, 254);">명</span><span class="title" style="background-color: rgb(248, 233, 25);">록</span></div>
+    </div>
+    <div id="contents">
+        <div id="nav">
+            <img id="playPauseBtn" src="../public/image/k.k.webp" alt="나비보벳따우">
+            <div id="desc">동물의 숲 방문을 환영합니다</div>
+        </div>
+        <div id="posts">
+            <div id="newPost">
+                <form id = "makeNew">
+                    <fieldset id="new">
+                        <div id="titles">
+                            <input id="title" type="text" name="title" placeholder="제목을 입력하세요" maxlength="30">
+                            <input id="writer" type="text" name="writer" placeholder="작성자" maxlength="10">
+                        </div>
+                        <div id="details">
+                            <textarea placeholder="내용을 입력하세요" name="content" id="content" cols="60" rows="10"></textarea>
+                        </div>
+                        <div id="ends">
+                            <input id="password" type="text" name="password" placeholder="비밀번호" maxlength="4">
+                            <button type="submit" class="done">게시하기</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id = "footer">
+        Made by. <br>
+        FrontEnd 황인영 &nbsp; BackEnd 박연우
+    </div>
+    <audio id="audio" src="../public/bgm/나비보벳따우.mp3" loop></audio>
+    <script src="../src/index.js"></script>
+</body>
+</html>

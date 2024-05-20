@@ -11,7 +11,8 @@ async function getPosts() {
 
    const postList = await fetchData.json();
 
-   console.log(postList[1]);
+   console.log(postList);
+   
 
    postList.map((data, i) =>{
        //불러온 데이터 리스트 각각에 대해 DOM 생성
@@ -41,7 +42,7 @@ async function getPosts() {
 
        //여기서 이벤트리스너를 등록 -> 삭제하기 기능
         postDelete.addEventListener('click', (element)=> {
-            deletePost(element);
+            deletePost(element, data.password);
         })
 
        const line = document.createElement('hr');
@@ -104,19 +105,29 @@ form.addEventListener('submit', async (event) => {
 
 //<삭제하기 기능>
 const deletePost = async (e) => {
-    console.log(e.target.parentElement.id);
     let delId = e.target.parentElement.id;
+    let pw = parseInt(prompt('비밀번호를 입력해주세요'));
+
     //delPost는 삭제할 게시물 전체 div 가르킴.
-    let delPost = document.getElementById(delId);
-    
+
+    const throwDel = {
+        "password" : pw
+    };
+
+    const toDelJson = JSON.stringify(throwDel);
     const response = await fetch( `${baseURL}${delId}/`,{
         method: "DELETE",
+        headers: {
+            "Content-Type" : "application/json",
+        },
+        body: toDelJson
     });
     console.log(response);
 
+    location.reload();
+    
     //반영 내용 update되도록 reload해줌
 }
-
 
 
 //이건 그냥 나비보벳따우
