@@ -69,7 +69,11 @@ body{
     font-family: "Dongle", sans-serif;
     font-weight: 400;
     font-style: normal;
-
+}
+#getData{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    align-self: center;
 }
 #playPauseBtn{
     width: 5%;
@@ -80,6 +84,7 @@ body{
 }
 #posts{
     display: flex; 
+    flex-direction: column;
     justify-content: center;
     margin-left: 7%;
     margin-right: 7%;
