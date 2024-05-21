@@ -1,8 +1,8 @@
 const baseURL = "http://likelion-toyproject.kro.kr:8000/post/"
 
 //<불러오기 기능>
-window.addEventListener("load", (e)=>{
-    getPosts(e);
+window.addEventListener("load", ()=>{
+    getPosts();
 });
 
 async function getPosts() {
@@ -42,7 +42,7 @@ async function getPosts() {
 
        //여기서 이벤트리스너를 등록 -> 삭제하기 기능
         postDelete.addEventListener('click', (element)=> {
-            deletePost(element, data.password);
+            deletePost(element);
         })
 
        const line = document.createElement('hr');
@@ -81,6 +81,8 @@ form.addEventListener('submit', async (event) => {
     //form의 name이 key값이 됨!
     const formData = new FormData(form);
 
+    console.log(formData);
+
     //서버에 보낼 데이터 구성
     const requestData = {};
     formData.forEach((value, key) => {
@@ -89,7 +91,7 @@ form.addEventListener('submit', async (event) => {
 
     //JSON 형태로 바꿔서 보내줄거임
     const toJson = JSON.stringify(requestData);
-
+    console.log(toJson);
     //fetch API를 이용해 보낼거임, JSON 형태임을 명시
     const response = await fetch( `${baseURL}`,{
         method: "POST",
@@ -98,9 +100,7 @@ form.addEventListener('submit', async (event) => {
         },
         body: toJson
     });
-
-    //반영 내용 update되도록 reload해줌
-    location.reload();
+    //location.reload();
 })
 
 //<삭제하기 기능>
@@ -115,6 +115,9 @@ const deletePost = async (e) => {
     };
 
     const toDelJson = JSON.stringify(throwDel);
+    console.log('toDelJson');
+
+    
     const response = await fetch( `${baseURL}${delId}/`,{
         method: "DELETE",
         headers: {
@@ -122,10 +125,17 @@ const deletePost = async (e) => {
         },
         body: toDelJson
     });
-    console.log(response);
 
+    if(response.ok) {
+        console.log(response.ok);
+        //location.reload();
+        
+    }
+    else {
+        console.log(response.ok);
+        alert('비밀번호가 틀렸습니다.');
+    }
     location.reload();
-    
     //반영 내용 update되도록 reload해줌
 }
 
