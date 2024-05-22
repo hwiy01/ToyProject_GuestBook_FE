@@ -12,6 +12,7 @@ form.addEventListener('submit',(e) => {
     e.preventDefault();
     const formData = new FormData(form);
     postData(e, formData);
+    resetForm();
 });
 
 getData.addEventListener("click", ()=>{
@@ -82,6 +83,13 @@ async function getPosts(){
         toAdd.appendChild(eachPost);
     })
 }
+
+function resetForm() {
+    document.querySelectorAll('input, textarea').forEach((e)=>{
+        e.value = '';
+    });
+}
+
 
 //이건 그냥 나비보벳따우
 document.addEventListener('DOMContentLoaded', function() {

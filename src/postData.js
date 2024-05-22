@@ -19,6 +19,8 @@ async function postData(e, formData){
     });
 
     getPosts();
+
 }
+
 
 export default postData;
