@@ -7,7 +7,6 @@ async function postData(e, formData){
     formData.forEach((value, key) => {
         requestData[key] = value;
     });
-    console.log(requestData);
 
     //fetch API를 이용해 보낼거임, JSON 형태임을 명시
     await fetch( `${baseURL}`,{

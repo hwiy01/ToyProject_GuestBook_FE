@@ -28,7 +28,6 @@ async function getPosts(){
 
    const postList = await fetchData.json();
 
-   console.log(postList);
 
     postList.map((data) =>{
         //불러온 데이터 리스트 각각에 대해 DOM 생성
